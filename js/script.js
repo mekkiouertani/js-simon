@@ -13,10 +13,11 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-let timerCounter = 3; //secondi
+let timerCounter = 31; //secondi
 const btnStart = document.getElementById('start');
 const btnSubmit = document.getElementById('submit');
 const data = document.querySelector('input').value;
+let countDown;
 
 //Elemento che contiene il timer e i numeri casuali
 let boxTimerNumbers = document.querySelector('.box-timer-numbers');
@@ -27,9 +28,13 @@ let boxNumber = document.getElementById('numbers-5');
 btnStart.addEventListener('click', function(){
     boxTimerNumbers.classList.remove('d-none');
     
-    const countDown = setInterval(timeStart, 1000);
-    //timeStart();
-    function timeStart(){
+    countDown = setInterval(timeStart, 1000);
+    
+    
+});
+
+//fa partire il timer al click del bottone
+function timeStart(){
     timerCounter--;
     console.log(timerCounter);
     
@@ -43,11 +48,6 @@ btnStart.addEventListener('click', function(){
     }
     };
    
-    
-});
-
-//fa partire il timer al click del bottone
-
 
 
 
