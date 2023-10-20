@@ -13,7 +13,7 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-let timerCounter = 30; //secondi
+let timerCounter = 3; //secondi
 const btnStart = document.getElementById('start');
 const btnSubmit = document.getElementById('submit');
 const data = document.querySelector('input').value;
@@ -28,24 +28,26 @@ btnStart.addEventListener('click', function(){
     boxTimerNumbers.classList.remove('d-none');
     
     const countDown = setInterval(timeStart, 1000);
+    timeStart();
     
-    function timeStart(){
+   
+    
+});
+
+//fa partire il timer al click del bottone
+function timeStart(){
     timerCounter--;
     console.log(timerCounter);
     
     if (timerCounter > 0){
         boxTimerNumbers.classList.remove('d-none');
         let timerEl = document.getElementById('timer');
-        timerEl.innerHTML = `Timer: ${timerCounter}`;
+        timerEl.innerHTML = `Timer: ${timerCounter}s`;
     } else {
         boxTimerNumbers.classList.add('d-none');
+        timerCounter;
     }
     };
-   
-    
-});
-
-
 
 
 
