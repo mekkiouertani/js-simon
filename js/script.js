@@ -13,11 +13,14 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-let timerCounter = 31; //secondi
+let timerCounter = 3; 
+let countDown;
+const nToCreate = 5;
+let nCreated = [];
 const btnStart = document.getElementById('start');
 const btnSubmit = document.getElementById('submit');
 const data = document.querySelector('input').value;
-let countDown;
+const dataBox = document.querySelector('.form-group');
 
 //Elemento che contiene il timer e i numeri casuali
 let boxTimerNumbers = document.querySelector('.box-timer-numbers');
@@ -27,9 +30,10 @@ let boxNumber = document.getElementById('numbers-5');
 
 btnStart.addEventListener('click', function(){
     boxTimerNumbers.classList.remove('d-none');
+    dataBox.classList.add('d-none');
     
+    //Fa partire la funzione TIMESTART
     countDown = setInterval(timeStart, 1000);
-    
     
 });
 
@@ -45,22 +49,11 @@ function timeStart(){
     } else {
         clearInterval(countDown);
         boxTimerNumbers.classList.add('d-none');
+        dataBox.classList.remove('d-none');
     }
-    };
+};
    
 
-
-
-/* const timer = setInterval(function(){
-    timerCounter--;
-    console.log(timerCounter);
-    if (timerCounter === 0){
-        clearInterval(timer);
-        boxTimerNumbers.classList.add('d-none');
-       let timerEl = document.getElementById('timer');
-        timerEl.innerHTML = `qui ci va il timer ${timerCounter}`;
-    }
-}) */
 
 //CONSOLE LOG
 console.log(btnStart);
