@@ -28,14 +28,8 @@ btnStart.addEventListener('click', function(){
     boxTimerNumbers.classList.remove('d-none');
     
     const countDown = setInterval(timeStart, 1000);
-    timeStart();
-    
-   
-    
-});
-
-//fa partire il timer al click del bottone
-function timeStart(){
+    //timeStart();
+    function timeStart(){
     timerCounter--;
     console.log(timerCounter);
     
@@ -44,10 +38,16 @@ function timeStart(){
         let timerEl = document.getElementById('timer');
         timerEl.innerHTML = `Timer: ${timerCounter}s`;
     } else {
+        clearInterval(countDown);
         boxTimerNumbers.classList.add('d-none');
-        timerCounter;
     }
     };
+   
+    
+});
+
+//fa partire il timer al click del bottone
+
 
 
 
