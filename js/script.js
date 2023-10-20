@@ -13,10 +13,10 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-let timerCounter = 3; 
+let timerCounter = 30; 
 let countDown;
 const nToCreate = 5;
-let nCreated = [];
+let nCreated =[];
 const btnStart = document.getElementById('start');
 const btnSubmit = document.getElementById('submit');
 const data = document.querySelector('input').value;
@@ -31,7 +31,10 @@ let boxNumber = document.getElementById('numbers-5');
 btnStart.addEventListener('click', function(){
     boxTimerNumbers.classList.remove('d-none');
     dataBox.classList.add('d-none');
-    
+
+    //Fa partire la funzione che genera numeri
+    nGenerator();
+
     //Fa partire la funzione TIMESTART
     countDown = setInterval(timeStart, 1000);
     
@@ -40,7 +43,7 @@ btnStart.addEventListener('click', function(){
 //fa partire il timer al click del bottone
 function timeStart(){
     timerCounter--;
-    console.log(timerCounter);
+    console.log(timerCounter,'sec');
     
     if (timerCounter > 0){
         boxTimerNumbers.classList.remove('d-none');
@@ -52,10 +55,20 @@ function timeStart(){
         dataBox.classList.remove('d-none');
     }
 };
-   
 
+function nGenerator(){
+    for(let i = 0; i < nToCreate; i++){
+        let randomic =(getRndInteger(1,100));
+        console.log('rnd',randomic);
+        if(!nCreated.includes(randomic)){
+            nCreated.push(randomic)
+            boxNumber.innerHTML = nCreated;
+        }
+    }
+}  
 
 //CONSOLE LOG
 console.log(btnStart);
 console.log(btnSubmit);
 console.log(data);
+console.log(nCreated);
