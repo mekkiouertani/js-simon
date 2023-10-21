@@ -30,7 +30,6 @@ const nToCreate = 5;
 let nCreated =[];
 let nUser = [];
 let nResult = [];
-let score=0;
 
 //EVENTO PER BOTTONE START
 btnStart.addEventListener('click', function(){
@@ -48,8 +47,8 @@ btnStart.addEventListener('click', function(){
 //EVENTO PER BOTTONE INVIO
 btnSubmit.addEventListener('click', function(){
     getDataUser();
+    finalScore();
     
-
        
 });
 
@@ -81,7 +80,8 @@ function nGenerator(randomic){
             boxNumber.innerHTML = nCreated;
         };
     }
-}   console.log('numeri casuali',nCreated);
+    return nCreated;
+}  
     
 
 //Funzione per prendere numeri inseriti dall'utente
@@ -91,18 +91,35 @@ function getDataUser(){
     let dataUser3 = parseInt(document.getElementById('data-3').value);
     let dataUser4 = parseInt(document.getElementById('data-4').value);
     let dataUser5 = parseInt(document.getElementById('data-5').value);
-    console.log(dataUser1,dataUser2,dataUser3,dataUser4,dataUser5);
-    nUser.push(dataUser1,dataUser2,dataUser3,dataUser4,dataUser5);
-    console.log('numeri utente',nUser);
+    nUser.push(dataUser1,dataUser2,dataUser3,dataUser4,dataUser5);   
     
-    if(!nResult.includes(dataUser1,dataUser2,dataUser3,dataUser4,dataUser5)){
-        nResult.push(dataUser1,dataUser2,dataUser3,dataUser4,dataUser5);
-    }
-    
+        for (let i = 0; i < nCreated.length; i++){
+            if(!nCreated.includes(nUser[i])){
+                nResult.push(nUser[i]);
+            }
+        }
 };
 
+function finalScore(){
+    if(nResult.length === 5){
+        boxAnswerEl.innerHTML = `hai indovinato 5 numeri`;
+    } else if( nResult.length === 6){
+        boxAnswerEl.innerHTML = `hai indovinato 4 numeri`;
+    } else if( nResult.length === 7){
+        boxAnswerEl.innerHTML = `hai indovinato 3 numeri`;
+    } else if( nResult.length === 8){
+        boxAnswerEl.innerHTML = `hai indovinato 2 numeri`;
+    } else if( nResult.length === 9){
+        boxAnswerEl.innerHTML = `hai indovinato 1 numeri`;
+    } else if( nResult.length === 10){
+        boxAnswerEl.innerHTML = `hai indovinato 0 numeri`;
+    }
+};
+    
+
+
+
 //CONSOLE LOG
-//console.log(btnStart);
-//console.log(btnSubmit);
-//console.log(data);
+console.log('numeri casuali',nCreated);
+console.log('numeri utente',nUser); 
 console.log('array',nResult);
