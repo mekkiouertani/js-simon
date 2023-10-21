@@ -14,6 +14,7 @@ function getRndInteger(min, max) {
 }
 
 //ELEMENTI DOM
+const guessedEl = document.getElementById('guessed');
 const btnStart = document.getElementById('start');
 const btnSubmit = document.getElementById('submit');
 const data = document.querySelector('input');
@@ -23,8 +24,9 @@ let boxTimerNumbers = document.querySelector('.box-timer-numbers');
 //Elemento su cui verranno stampati i numeri casuali
 let boxNumber = document.getElementById('numbers-5');
 let boxAnswerEl = document.getElementById('answer');
+
 //VARIABILI
-let timerCounter = 6; 
+let timerCounter = 1; 
 let countDown;
 const nToCreate = 5;
 let nCreated =[];
@@ -48,14 +50,12 @@ btnStart.addEventListener('click', function(){
 btnSubmit.addEventListener('click', function(){
     getDataUser();
     finalScore();
-    
-       
+          
 });
 
 //fa partire il timer al click del bottone
 function timeStart(){
     timerCounter--;
-    console.log(timerCounter,'sec');
     
     let timerEl = document.getElementById('timer');
     
@@ -96,6 +96,9 @@ function getDataUser(){
         for (let i = 0; i < nCreated.length; i++){
             if(!nCreated.includes(nUser[i])){
                 nResult.push(nUser[i]);
+            } else{
+                console.log(nUser[i]);
+                guessedEl.innerHTML += ` hai indovinato questo numero: <strong>${nUser[i]}</strong> <br>`;
             }
         }
 };
@@ -111,7 +114,7 @@ function finalScore(){
     } else if( nResult.length === 8){
         boxAnswerEl.innerHTML = `hai indovinato 2 numeri`;
     } else if( nResult.length === 9){
-        boxAnswerEl.innerHTML = `hai indovinato 1 numeri`;
+        boxAnswerEl.innerHTML = `hai indovinato 1 numero`;
     } else if( nResult.length === 10){
         boxAnswerEl.innerHTML = `hai indovinato 0 numeri`;
     }
