@@ -13,22 +13,25 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
+//ELEMENTI DOM
+const btnStart = document.getElementById('start');
+const btnSubmit = document.getElementById('submit');
+const data = document.querySelector('input');
+const dataBox = document.querySelector('.form-group');
+//Elemento che contiene il timer e i numeri casuali
+let boxTimerNumbers = document.querySelector('.box-timer-numbers');
+//Elemento su cui verranno stampati i numeri casuali
+let boxNumber = document.getElementById('numbers-5');
+
+//VARIABILI
 let timerCounter = 1; 
 let countDown;
 const nToCreate = 5;
 let nCreated =[];
 let nUser = [];
-const btnStart = document.getElementById('start');
-const btnSubmit = document.getElementById('submit');
-const data = document.querySelector('input');
-const dataBox = document.querySelector('.form-group');
 
-//Elemento che contiene il timer e i numeri casuali
-let boxTimerNumbers = document.querySelector('.box-timer-numbers');
 
-//Elemento su cui verranno stampati i numeri casuali
-let boxNumber = document.getElementById('numbers-5');
-
+//EVENTO PER BOTTONE START
 btnStart.addEventListener('click', function(){
     boxTimerNumbers.classList.remove('d-none');
     dataBox.classList.add('d-none');
@@ -39,6 +42,18 @@ btnStart.addEventListener('click', function(){
     //Fa partire la funzione TIMESTART
     countDown = setInterval(timeStart, 1000);
     
+});
+
+//EVENTO PER BOTTONE INVIO
+btnSubmit.addEventListener('click', function(){
+    let boxAnswerEl = document.querySelector('.answer');
+    let dataUser = parseInt(data.value);
+    console.log(dataUser);
+    if (NaN !== dataUser){
+        nUser.push(dataUser);
+    } else {
+        boxAnswerEl.textContent = "inserisci solo numeri";
+    }
 });
 
 //fa partire il timer al click del bottone
@@ -59,6 +74,7 @@ function timeStart(){
     }
 };
 
+//crea dei numeri casuali
 function nGenerator(){
     for(let i = 0; i < nToCreate; i++){
         let randomic =(getRndInteger(1,100));
@@ -68,18 +84,8 @@ function nGenerator(){
             boxNumber.innerHTML = nCreated;
         }
     }
-}  
+};
 
-btnSubmit.addEventListener('click', function(){
-    let boxAnswerEl = document.querySelector('.answer');
-    let dataUser = parseInt(data.value);
-    console.log(dataUser);
-    if (NaN !== dataUser){
-        nUser.push(dataUser);
-    } else {
-        boxAnswerEl.textContent = "inserisci solo numeri";
-    }
-});
 
 //CONSOLE LOG
 console.log(btnStart);
