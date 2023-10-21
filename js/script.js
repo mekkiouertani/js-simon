@@ -29,7 +29,8 @@ let countDown;
 const nToCreate = 5;
 let nCreated =[];
 let nUser = [];
-
+let nResult = [];
+let score=0;
 
 //EVENTO PER BOTTONE START
 btnStart.addEventListener('click', function(){
@@ -48,8 +49,7 @@ btnStart.addEventListener('click', function(){
 btnSubmit.addEventListener('click', function(){
     getDataUser();
     
-    
-        
+
        
 });
 
@@ -72,32 +72,37 @@ function timeStart(){
 };
 
 //crea dei numeri casuali
-function nGenerator(){
+function nGenerator(randomic){
     for(let i = 0; i < nToCreate; i++){
-        let randomic =(getRndInteger(1,100));
-        console.log('rnd',randomic);
+        randomic =(getRndInteger(1,100));
         if(!nCreated.includes(randomic)){
-            nCreated.push(randomic)
+            nCreated.push(randomic);
+            nResult.push(randomic);
             boxNumber.innerHTML = nCreated;
-        }
+        };
     }
-};
+}   console.log('numeri casuali',nCreated);
+    
 
 //Funzione per prendere numeri inseriti dall'utente
 function getDataUser(){
-    let dataUser1 = document.getElementById('data-1').value;
-    let dataUser2 = document.getElementById('data-2').value;
-    let dataUser3 = document.getElementById('data-3').value;
-    let dataUser4 = document.getElementById('data-4').value;
-    let dataUser5 = document.getElementById('data-5').value;
+    let dataUser1 = parseInt(document.getElementById('data-1').value);
+    let dataUser2 = parseInt(document.getElementById('data-2').value);
+    let dataUser3 = parseInt(document.getElementById('data-3').value);
+    let dataUser4 = parseInt(document.getElementById('data-4').value);
+    let dataUser5 = parseInt(document.getElementById('data-5').value);
     console.log(dataUser1,dataUser2,dataUser3,dataUser4,dataUser5);
     nUser.push(dataUser1,dataUser2,dataUser3,dataUser4,dataUser5);
     console.log('numeri utente',nUser);
+    
+    if(!nResult.includes(dataUser1,dataUser2,dataUser3,dataUser4,dataUser5)){
+        nResult.push(dataUser1,dataUser2,dataUser3,dataUser4,dataUser5);
+    }
+    
 };
 
 //CONSOLE LOG
 //console.log(btnStart);
 //console.log(btnSubmit);
 //console.log(data);
-//console.log(nCreated);
-console.log('numeri utente', nUser);
+console.log('array',nResult);
