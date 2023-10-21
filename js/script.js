@@ -24,7 +24,7 @@ let boxTimerNumbers = document.querySelector('.box-timer-numbers');
 let boxNumber = document.getElementById('numbers-5');
 let boxAnswerEl = document.getElementById('answer');
 //VARIABILI
-let timerCounter = 1; 
+let timerCounter = 6; 
 let countDown;
 const nToCreate = 5;
 let nCreated =[];
@@ -100,6 +100,7 @@ function getDataUser(){
         }
 };
 
+//Funzione che assegna il punteggio finale
 function finalScore(){
     if(nResult.length === 5){
         boxAnswerEl.innerHTML = `hai indovinato 5 numeri`;
@@ -114,6 +115,7 @@ function finalScore(){
     } else if( nResult.length === 10){
         boxAnswerEl.innerHTML = `hai indovinato 0 numeri`;
     }
+    boxAnswerEl.innerHTML += ` <strong> <br> i numeri da indovinare erano ${nCreated}<strong>`;
 };
     
 
