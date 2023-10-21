@@ -22,7 +22,7 @@ const dataBox = document.querySelector('.form-group');
 let boxTimerNumbers = document.querySelector('.box-timer-numbers');
 //Elemento su cui verranno stampati i numeri casuali
 let boxNumber = document.getElementById('numbers-5');
-
+let boxAnswerEl = document.getElementById('answer');
 //VARIABILI
 let timerCounter = 1; 
 let countDown;
@@ -44,7 +44,14 @@ btnStart.addEventListener('click', function(){
     
 });
 
-
+//EVENTO PER BOTTONE INVIO
+btnSubmit.addEventListener('click', function(){
+    getDataUser();
+    
+    
+        
+       
+});
 
 //fa partire il timer al click del bottone
 function timeStart(){
@@ -76,10 +83,21 @@ function nGenerator(){
     }
 };
 
+//Funzione per prendere numeri inseriti dall'utente
+function getDataUser(){
+    let dataUser1 = document.getElementById('data-1').value;
+    let dataUser2 = document.getElementById('data-2').value;
+    let dataUser3 = document.getElementById('data-3').value;
+    let dataUser4 = document.getElementById('data-4').value;
+    let dataUser5 = document.getElementById('data-5').value;
+    console.log(dataUser1,dataUser2,dataUser3,dataUser4,dataUser5);
+    nUser.push(dataUser1,dataUser2,dataUser3,dataUser4,dataUser5);
+    console.log('numeri utente',nUser);
+};
 
 //CONSOLE LOG
-console.log(btnStart);
-console.log(btnSubmit);
-console.log(data);
-console.log(nCreated);
+//console.log(btnStart);
+//console.log(btnSubmit);
+//console.log(data);
+//console.log(nCreated);
 console.log('numeri utente', nUser);
