@@ -44,17 +44,7 @@ btnStart.addEventListener('click', function(){
     
 });
 
-//EVENTO PER BOTTONE INVIO
-btnSubmit.addEventListener('click', function(){
-    let boxAnswerEl = document.querySelector('.answer');
-    let dataUser = parseInt(data.value);
-    console.log(dataUser);
-    if (NaN !== dataUser){
-        nUser.push(dataUser);
-    } else {
-        boxAnswerEl.textContent = "inserisci solo numeri";
-    }
-});
+
 
 //fa partire il timer al click del bottone
 function timeStart(){
