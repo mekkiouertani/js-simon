@@ -13,13 +13,14 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-let timerCounter = 30; 
+let timerCounter = 1; 
 let countDown;
 const nToCreate = 5;
 let nCreated =[];
+let nUser = [];
 const btnStart = document.getElementById('start');
 const btnSubmit = document.getElementById('submit');
-const data = document.querySelector('input').value;
+const data = document.querySelector('input');
 const dataBox = document.querySelector('.form-group');
 
 //Elemento che contiene il timer e i numeri casuali
@@ -45,14 +46,16 @@ function timeStart(){
     timerCounter--;
     console.log(timerCounter,'sec');
     
+    let timerEl = document.getElementById('timer');
+    
     if (timerCounter > 0){
         boxTimerNumbers.classList.remove('d-none');
-        let timerEl = document.getElementById('timer');
         timerEl.innerHTML = `Timer: ${timerCounter}s`;
     } else {
         clearInterval(countDown);
         boxTimerNumbers.classList.add('d-none');
         dataBox.classList.remove('d-none');
+        btnStart.classList.add('d-none');
     }
 };
 
@@ -67,8 +70,20 @@ function nGenerator(){
     }
 }  
 
+btnSubmit.addEventListener('click', function(){
+    let boxAnswerEl = document.querySelector('.answer');
+    let dataUser = parseInt(data.value);
+    console.log(dataUser);
+    if (NaN !== dataUser){
+        nUser.push(dataUser);
+    } else {
+        boxAnswerEl.textContent = "inserisci solo numeri";
+    }
+});
+
 //CONSOLE LOG
 console.log(btnStart);
 console.log(btnSubmit);
 console.log(data);
 console.log(nCreated);
+console.log('numeri utente', nUser);
