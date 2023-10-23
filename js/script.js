@@ -29,6 +29,8 @@ let boxAnswerEl = document.getElementById('answer');
 let timerCounter = 30; 
 let countDown;
 const nToCreate = 5;
+
+//array
 let nCreated =[];
 let nUser = [];
 let nResult = [];
@@ -72,8 +74,8 @@ function timeStart(){
 
 //crea dei numeri casuali
 function nGenerator(randomic){
-    for(let i = 0; i < nToCreate; i++){
-        randomic =(getRndInteger(1,100));
+    while(nCreated.length < nToCreate){
+        let randomic = (getRndInteger(1,100));
         if(!nCreated.includes(randomic)){
             nCreated.push(randomic);
             nResult.push(randomic);
