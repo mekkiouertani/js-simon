@@ -26,7 +26,7 @@ let boxNumber = document.getElementById('numbers-5');
 let boxAnswerEl = document.getElementById('answer');
 
 //VARIABILI
-let timerCounter = 1; 
+let timerCounter = 30; 
 let countDown;
 const nToCreate = 5;
 let nCreated =[];
@@ -97,7 +97,6 @@ function getDataUser(){
             if(!nCreated.includes(nUser[i])){
                 nResult.push(nUser[i]);
             } else{
-                console.log(nUser[i]);
                 guessedEl.innerHTML += ` hai indovinato questo numero: <strong>${nUser[i]}</strong> <br>`;
             }
         }
@@ -121,9 +120,6 @@ function finalScore(){
     boxAnswerEl.innerHTML += ` <strong> <br> i numeri da indovinare erano ${nCreated}<strong>`;
 };
     
-
-
-
 //CONSOLE LOG
 console.log('numeri casuali',nCreated);
 console.log('numeri utente',nUser); 
